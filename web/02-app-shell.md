@@ -108,7 +108,7 @@ derselben Stelle; das ist Kern der Wiedererkennbarkeit.
   wachsen.
 - **Zweispaltige Arbeitsflächen** (Werkzeugseiten, Master-Detail-Split):
   Hauptfläche flexibel + feste Spalte (~360px), Abstand 24px; Höhe begrenzen,
-  Inhalte scrollen intern.
+  Inhalte scrollen intern. Anatomie des Splits: `14-detail-ansichten.md`.
 
 ## Navigation beantwortet drei Fragen
 

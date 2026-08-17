@@ -115,7 +115,7 @@ Kernzugriffe.
 - **Zweispaltige Arbeitsflächen** (`02`, feste ~360er-Spalte): unter
   mittel stapelt die feste Spalte unter die Hauptfläche.
 - **Master-Detail-Split:** unter schmal nacheinander statt nebeneinander
-  (Liste → Detail mit Zurück); Details im Kapitel Detail-Ansichten.
+  (Liste → Detail mit Zurück); Details: `14-detail-ansichten.md`.
 - **Karten-Raster** definieren Mindest-Kartenbreiten
   (`grid: minmax(…)`) und fließen selbst — nie feste Spaltenzahlen je
   Viewport.

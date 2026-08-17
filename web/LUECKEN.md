@@ -70,34 +70,14 @@ Abwägung samt verworfener Alternativen in `entscheidungen.md`.
 
 ### A2 · `14-detail-ansichten.md` — Detailseite und Master-Detail-Split
 
-**Was fehlt:** `entscheidungen.md` beschließt drei Detail-Formen; nur das
-Modal ist spezifiziert (`05`/`06`). Für die **Detailseite** fehlt die
-Anatomie (Kopf, Rückweg, Tabs, Abschnitte, Aktionen), für den
-**Master-Detail-Split** alles (Spaltenbreiten, Auswahlzustand, Tastatur,
-Leerzustand).
-
-**Andere:** Polaris' „Resource details layout" (Kopf: Zurück-Aktion, Titel,
-Status-Badge, Aktionen; Karten-Abschnitte; Vor/Zurück zwischen
-Datensätzen) und Fioris Object Page (Kopfbereich + Abschnitts-Navigation,
-Anzeige-/Bearbeiten-Modus) sind exakt unser Anwendungsfall; Material 3
-„List-detail" definiert das Split-Verhalten inkl. Kompakt-Fallback.
-
-**Vorschlag:**
-
-- **Detailseite:** Zurück-Link zur Liste als erste Zeile (Browser-Zurück
-  funktioniert zusätzlich, `02`); Titelzeile = Entitätsname + Status-Badge
-  + Aktionen rechts (genau ein Primär); Unterbereiche als Tabs der
-  Sub-Navigation (deep-linkbar, bereits `02`); Inhalt in Abschnitts-Karten
-  nach `05`; verwandte Datensätze als normale Tabellen nach `04`. Rückkehr
-  zur Liste stellt Scroll-/Filter-/Seitenzustand wieder her (URL trägt ihn
-  schon — als Pflicht aussprechen).
-- **Master-Detail-Split** (Posteingangs-Muster): Liste links schmal
-  (~360 px, reduzierte Zeilen: Titel + Sekundärzeile + Status), Detail
-  rechts flexibel; Auswahl in der URL; `↑`/`↓` wechseln den Eintrag,
-  Abarbeiten-Aktionen springen zum nächsten offenen; leerer rechter
-  Bereich = Leerzustand nach `07`; unter „schmal" nacheinander (A1).
-- Abgrenzungstabelle Modal / Seite / Split aus `entscheidungen.md`
-  hierher überführen (eine Stelle, an der man nachschlägt).
+**✅ Erledigt 2026-08-17** — Kapitel `14-detail-ansichten.md` angelegt:
+Formen-Wahltabelle, Detailseiten-Anatomie (benannter Zurück-Link statt
+Breadcrumb, Kopfzeile mit Badge und Aktionen, Anzeige-Felder,
+abschnittsweises Bearbeiten im Modal, kein Blättern zwischen
+Datensätzen), Split-Anatomie (360er-Liste ohne Aktionsspalte, Auswahl in
+der URL, `↑`/`↓`, Auto-Weiter zum nächsten Offenen). Abwägung samt
+verworfener Alternativen in `entscheidungen.md`; Querverweise in
+`02`/`04`/`05`/`13`.
 
 ### A3 · `15-ausnahmezustaende.md` — Session, Verbindung, Fehlerseiten, Berechtigungen
 

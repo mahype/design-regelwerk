@@ -39,7 +39,8 @@ Die Tabelle ist eine Karte: `--surface-raised`, 1px `--border`, Radius
   `--text-secondary` unter dem Hauptwert; technische Werte in `--font-mono`.
 - **Zeile als Ziel:** Öffnet die Zeile ein Detail, ist die ganze Zeile
   klickbar (Zeigerhand) **und** es gibt ein explizites Ansehen-Icon — die
-  Fläche ist Komfort, das Icon der zugängliche, benannte Weg.
+  Fläche ist Komfort, das Icon der zugängliche, benannte Weg. Welche
+  Detail-Form eine Entität bekommt: `14-detail-ansichten.md`.
 
 ## Aktionsspalte
 

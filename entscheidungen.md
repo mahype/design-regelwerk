@@ -271,3 +271,39 @@ Verhaltensunterschied; 768 ist der branchenweite Tablet-Sweet-Spot, 1280
 folgt aus der Shell-Arithmetik (256 px Sidebar + Abstände + ~950 px
 Tabelle). Die 320-px-Untergrenze spricht nur aus, was WCAG-Reflow ohnehin
 verlangt — als Anspruch formuliert statt als Compliance-Fußnote.
+
+---
+
+## 2026-08-17 — Detail-Ansichten: Anatomie von Detailseite und Split
+
+**Offene Frage:** Die Drei-Formen-Entscheidung (oben) ließ offen, wie
+Detailseite und Master-Detail-Split konkret aussehen (Lücken-Analyse A2;
+Vorbilder: Polaris „Resource details", Fiori Object Page, Material
+„List-detail").
+
+**Entscheidung:** (a) Rückweg ist ein **benannter Zurück-Link**
+(„← Kontenübersicht") als erste Inhaltszeile — Breadcrumbs bleiben
+ausgeschlossen; das Topbar-Suffix trägt auf Detailseiten den
+Datensatznamen. (b) **Kein Vor/Zurück-Blättern** auf der Detailseite —
+sequenzielle Arbeit ist die Aufgabe des Splits. (c) Bearbeitet wird
+**abschnittsweise im Formular-Modal** (Stift je Abschnitts-Karte); es
+gibt keinen Seiten-Bearbeiten-Modus und kein Inline-Editieren. (d) Im
+Split springt die Auswahl nach einer **erledigenden** Aktion automatisch
+zum nächsten offenen Eintrag; bloßes Speichern springt nie. Details:
+`web/14-detail-ansichten.md`.
+
+**Verworfene Alternativen:** Breadcrumbs (drittes Navigationssystem neben
+Topbar-Kontext und zwei Sidebar-Ebenen — bei Polaris/Carbon Standard, für
+unsere flache Hierarchie überdimensioniert). Blätter-Pfeile im
+Detail-Kopf à la Polaris (Listen-Kontext müsste mitgeführt werden, tote
+Pfeile bei Deep-Links, und die Split-Abgrenzung verwischt). Fioris
+Seiten-Bearbeiten-Modus (zweiter Formular-Ort neben dem Modal samt
+Ungespeichert-Logik auf Seiten). Inline-Klick-Editieren (dritter Ort,
+schwer zugänglich, die Seite verliert ihre Ruhe). Stehenbleiben nach der
+Abarbeiten-Aktion (vorhersehbarer, aber der Split existiert für den
+Durchsatz — ein Extra-Schritt pro Eintrag summiert sich bei 50 Belegen).
+
+**Warum:** Ein Formular-Ort, ein Rückweg-Muster, scharfe Abgrenzung der
+drei Formen — Wiedererkennbarkeit schlägt Einzelfall-Komfort. Der Kopf
+der Detailseite bleibt in der kompakten Typo-Skala (weiterhin kein
+großer Seitentitel).

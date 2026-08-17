@@ -16,6 +16,10 @@ sobald eines zutrifft (Abwägung: `entscheidungen.md`):
 - Datei-Verwaltung mit Nachbearbeitung (Hochladen + Zuordnen + Verlauf),
 - der Vorgang muss unterbrechbar oder per URL teilbar sein.
 
+Welche **Ansichts**-Form eine Entität bekommt (Modal, Detailseite,
+Master-Detail-Split) und wie auf Detailseiten bearbeitet wird
+(abschnittsweise im Modal): `14-detail-ansichten.md`.
+
 ## Weniger Felder, bewusste Reihenfolge
 
 Ein Modal ist kein Freibrief für Feldmengen. Vor der Umsetzung wird fachlich
