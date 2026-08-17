@@ -1,0 +1,232 @@
+# Entscheidungslog
+
+Wo die vier Quell-Regelwerke (Enon, TorroConnect, Anlagenmonitor,
+torro-design) einander widersprachen oder eine Frage offen ließen, steht hier
+die Abwägung: was übernommen wurde, was nicht, und warum. Neue Einträge werden
+datiert angehängt; eine Entscheidung wird durch einen neuen Eintrag revidiert,
+nicht durch stilles Umschreiben.
+
+---
+
+## 2026-08-17 — Komponenten-Bibliotheken: keine als Fundament
+
+**Konflikt:** Enon verbietet Komponenten-Frameworks kategorisch (entschieden
+2026-07-09); anlagenmonitor (als bestehendes Projekt) setzt Flux UI ein;
+Torro Billing hatte shadcn/ui im Projekt (nur Farbtokens genutzt).
+
+**Entscheidung:** Kein Komponenten-Framework und kein UI-Kit als Fundament
+neuer Anwendungen — auch kein shadcn/ui. Native HTML-Elemente zuerst
+(`<dialog>`, `popover`, `<details>`, native Selects). Headless-Primitives
+(Base UI, alternativ React Aria) sind erlaubt, aber nur für Widgets, deren
+Interaktions- und Barrierefreiheits-Komplexität den Eigenbau unverantwortlich
+macht (Combobox mit Typeahead, Mehrfachauswahl, Datumsbereich).
+Logik-Bibliotheken ohne eigene Optik (TanStack Table, Floating UI, Zod,
+date-fns) sind erlaubt. Muster-Studium ausdrücklich erwünscht: Verhalten aus
+WAI-ARIA APG und guten Bibliotheken übernehmen, Optik nie.
+
+**Warum:** Ein Kit bestimmt die Ästhetik mit („jede shadcn-App sieht gleich
+aus") — das Gegenteil von „handcrafted, not generated" (TorroConnect) und vom
+Marken-Slot-Modell dieses Regelwerks. Dazu Update-Kopplung und
+Abstraktionsschichten über Dingen, die HTML inzwischen selbst kann. Der
+Geschmacks-Befund („hat mir bis jetzt nicht gefallen") deckt sich mit der
+Enon-Vorentscheidung. Bestehende Projekte mit Framework (anlagenmonitor/Flux)
+bleiben unangetastet — die Regel gilt für Neues. Details und
+Alternativen-Vergleich: `web/11-komponenten.md`.
+
+---
+
+## 2026-08-17 — Datenlisten: Tabellen im Web, Kartenlisten auf dem Desktop
+
+**Konflikt:** torro-design (macOS): „Listen sind Kartenlisten, Tabellen nur
+fürs Log." Enon, TorroConnect und anlagenmonitor: Tabellen sind das Rückgrat,
+mit Sortieren/Filtern/Suchen/Paginierung.
+
+**Entscheidung:** Im Web sind homogene Datensätze **immer Tabellen** (mit den
+Pflicht-Fähigkeiten aus `web/04-tabellen-und-listen.md`). Karten(-raster)
+bleiben heterogenen Vorschau-Objekten vorbehalten — etwa Konten-Kacheln einer
+Übersicht. Die Kartenlisten-Regel ist eine **Desktop-Regel** (macOS-Idiom,
+schmale 720er-Inhaltsspalte) und wandert nach `desktop/`.
+
+**Warum:** Web-Fachanwendungen arbeiten mit dichten, gleichförmigen
+Datenmengen; Scanbarkeit, Spalten-Ausrichtung und tabellarische Ziffern
+schlagen dort jede Kartenoptik. Der Widerspruch war keiner — die beiden
+Regeln galten für verschiedene Plattformen und werden jetzt auch so geführt.
+
+---
+
+## 2026-08-17 — Formulare: Modal als Standard, Seite ab definierter Schwelle
+
+**Konflikt:** Enon: „Erstellen/Bearbeiten immer im Modal, nie inline."
+TorroConnect: „Dialoge unterbrechen — nur einsetzen, wenn nötig."
+
+**Entscheidung:** Das Modal ist der **Standard** für Anlegen und Bearbeiten
+von Datensätzen — der Nutzer behält die Liste als Kontext und kehrt exakt
+dorthin zurück. Eine **eigene Seite** (oder ein mehrstufiger Ablauf) ist
+vorgeschrieben, sobald eines zutrifft: mehr als ~8 Felder trotz fachlicher
+Reduktion, mehrere inhaltliche Abschnitte mit Tabs, Datei-Verwaltung mit
+Nachbearbeitung, oder der Vorgang muss unterbrechbar/verlinkbar sein.
+Bestätigungs-Dialoge bleiben Destruktivem und Unumkehrbarem vorbehalten;
+Browser-Dialoge sind verboten.
+
+**Warum:** Beide Quellen haben recht — auf verschiedenen Ebenen.
+TorroConnects Satz richtet sich gegen *unterbrechende* Dialoge (Rückfragen,
+Bestätigungen), Enons Regel für *Erfassungs*-Modale erhält den Kontext. Ein
+scrollendes 20-Felder-Modal wäre trotzdem Miss­brauch — deshalb die explizite
+Schwelle, die Enons „lange Formulare fachlich reduzieren" operationalisiert.
+
+---
+
+## 2026-08-17 — Drei Detail-Formen statt Dogma
+
+**Konflikt:** Enon kennt Detail-Modal (Standard) oder Detailseite. Torro
+Billing nutzt ein seitliches Detail-Panel neben der Liste; TorroMail
+(Desktop) ist ein Master-Detail-Split.
+
+**Entscheidung:** Übersicht + Detail bleibt das Grundmuster (nie mehrere
+Entitäten gleichzeitig offen). Für das Detail gibt es drei zulässige Formen:
+**(1) Modal** — Standard für CRUD; **(2) Detailseite** — für komplexe,
+verlinkbare Entitäten mit eigenen Unterbereichen; **(3) Master-Detail-Split**
+(Liste + festes Detail-Panel) — für das *sequenzielle Abarbeiten* vieler
+Einträge (Posteingangs-Muster: nächster/vorheriger Eintrag ohne
+Kontextwechsel). Die Form wird pro Entität einmal gewählt und dann überall
+gleich verwendet.
+
+**Warum:** Das Abarbeits-Szenario (Belege zuordnen, Posteingang durchgehen)
+ist real und ein Modal pro Zeile wäre dort spürbar langsamer. Statt die
+Praxis heimlich von der Regel abweichen zu lassen, bekommt sie definierte
+Kriterien.
+
+---
+
+## 2026-08-17 — Markenmoment: Slot statt Hero-Pflicht oder Hero-Verbot
+
+**Konflikt:** Enon: „Keine Dashboards, Hero-Flächen oder Deko — der Inhalt
+ist die Liste." torro-design: „Ein lauter Markenmoment pro Fenster" (Hero)
+ist Pflichtbestandteil jeder Torro-App.
+
+**Entscheidung:** Der **Arbeitsbereich gehört dem Inhalt** — dort gibt es
+keine Deko-Flächen, das ist generelle Regel. Wo die Marke einmal laut sein
+darf, definiert das **Markenprofil** (zulässige Orte: Anmeldeseite,
+Erstlauf-/Leerzustand, definierter Kopfbereich) — höchstens ein lauter Ort
+pro Sichtbereich, alles andere bleibt ruhig. Eine Marke ohne lauten Moment
+(Enon) ist genauso regelkonform wie eine mit (Torro).
+
+**Warum:** Beide Regeln schützen dasselbe: Ruhe im Arbeitsfluss. Ob eine
+Marke sich einen Auftritt gönnt, ist Markenidentität, keine
+Bedienbarkeitsfrage — also gehört es in den Slot, nicht ins Regelwerk.
+Dashboards sind davon getrennt zu bewerten: erlaubt, wenn sie echte
+operative Fragen beantworten und in die Arbeit verlinken; verboten als Deko
+(`web/02-app-shell.md`).
+
+---
+
+## 2026-08-17 — Suche/Filter: Popover als Standard, Filterleiste als begründete Ausnahme
+
+**Konflikt:** Enon: Suche/Filter **immer** als Lupe-Popover in der
+Aktionsleiste, „nie ein dauerhaft sichtbares Suchfeld über der Liste."
+Fachanwendungen wie eine Buchungsliste leben aber vom iterativen Filtern
+mit vielen Kriterien.
+
+**Entscheidung:** Das Such-Popover (Lupe in der Aktionsleiste, Live-Filterung,
+Aktiv-Indikator) ist der Standard. Eine **dauerhafte Filterleiste** über der
+Tabelle ist als Ausnahme zulässig, wenn das iterative Filtern die Hauptarbeit
+der Seite ist (z. B. Umsatz-/Buchungslisten mit Zeitraum, Betrag, Status,
+Volltext) — dann anwendungsweit konsistent, nicht mal so, mal so.
+Serverseitig paginierte Listen tragen Suche/Filter in den Query-Parametern
+(deep-linkbar, entprellt).
+
+**Warum:** Das Popover hält Seiten ruhig und die Suche an einer festen
+Stelle — richtig für die Mehrzahl der Verwaltungslisten. Bei
+Dauerfilter-Seiten versteckt es aber den Kern der Arbeit hinter einem Klick
+und verliert den Überblick über aktive Kriterien. Die Ausnahme ist eng
+definiert, damit sie nicht zum Schlupfloch wird.
+
+---
+
+## 2026-08-17 — Zeilenaktionen neutral grau, Rot erst am Ort der Entscheidung
+
+**Konflikt:** Enon: Löschen-Icon in der Aktionsspalte im Danger-Stil
+(rötlich). Anlagenmonitor: „Keine bunten Aktions-Icons" — alle Zeilenaktionen
+neutral grau, rote CTAs nur als Footer-Button im Dialog.
+
+**Entscheidung:** Anlagenmonitor-Linie. Zeilenaktionen (Ansehen → Bearbeiten
+→ Löschen, feste Reihenfolge) sind neutrale graue Icon-Buttons. Das
+Danger-Rot erscheint erst am Bestätigungs-Button des Lösch-Dialogs — dem Ort,
+an dem die Entscheidung tatsächlich fällt.
+
+**Warum:** Ein rotes Icon in jeder Zeile lässt die ganze Tabelle Alarm
+schreien und stumpft ab („ruhiges Erscheinungsbild"). Die Sicherung gehört an
+den Moment des Commitments, nicht an den Einstiegspunkt. Da Löschen ohnehin
+immer bestätigt wird, geht keine Sicherheit verloren.
+
+---
+
+## 2026-08-17 — Feldfehler: ein Fehlerblock plus markierte Felder
+
+**Konflikt:** Enon: „Keine Feld-für-Feld-Inline-Fehler, solange der
+Fehlerblock reicht." TorroConnect: „highlight invalid fields, validate
+early."
+
+**Entscheidung:** Beides, arbeitsteilig: **Eine** Meldung pro Kontext (der
+Fehlerblock über den Abschluss-Buttons) trägt den Text; betroffene Felder
+werden zusätzlich **markiert** (Fehler-Rahmen + `aria-invalid`), damit das
+Auge sie findet. Format-prüfbare Felder validieren beim Verlassen, nicht erst
+beim Absenden. Eingaben bleiben bei Fehlern immer erhalten.
+
+**Warum:** Der Block allein lässt den Nutzer bei längeren Formularen suchen;
+Feld-Texte allein zersplittern die Meldung. Die Kombination ist Standard
+guter Formulare und widerspricht keiner der beiden Quellen im Kern.
+
+---
+
+## 2026-08-17 — Theme-Handling: drei Zustände, `data-theme`, Default System
+
+**Konflikt:** Enon schaltet per `.dark`-Klasse mit Standard Dunkel;
+anlagenmonitor bietet Hell/Dunkel/System; Torro Billing folgte nur dem
+System ohne Umschalter.
+
+**Entscheidung:** Drei Zustände sind Pflicht: **System** (Default, kein
+Attribut gesetzt, `prefers-color-scheme` entscheidet), **explizit hell**,
+**explizit dunkel** (`data-theme="light|dark"` auf `<html>`). Umschalter im
+Kopfbereich und bereits auf der Anmeldeseite; Wahl wird gespeichert
+(localStorage) und überlebt Reload und Login. Eine Marke darf einen anderen
+*Default* setzen (Slot), nie die Zustände reduzieren. Das CSS-Muster steht im
+Token-Kontrakt.
+
+**Warum:** Nur-System (ohne Umschalter) bevormundet; Nur-Klasse (ohne
+System-Default) ignoriert die Betriebssystem-Einstellung beim Erstbesuch.
+Das Drei-Zustands-Muster ist die einzige Variante, bei der beides stimmt —
+und der un-gestempelte Default-Zustand ist erfahrungsgemäß die häufigste
+Fehlerquelle, deshalb ist er im Kontrakt explizit ausformuliert.
+
+---
+
+## 2026-08-17 — Icon-Set: ein Outline-Set pro Anwendung, Default Lucide
+
+**Konflikt:** Enon: ausschließlich Lucide. Anlagenmonitor: Outline-Heroicons.
+
+**Entscheidung:** Die generelle Regel ist: **ein** einziges Outline-Icon-Set
+pro Anwendung, einfarbig über `currentColor`, nie gemischt, keine
+Filled-/Duotone-/Emoji-Icons. Welches Set, ist ein Marken-Slot mit **Default
+Lucide** (größter Umfang, ISC-Lizenz, alle Stacks). Für dieselbe Funktion
+überall dasselbe Symbol.
+
+**Warum:** Die Wirkung (Einheitlichkeit, Ruhe, Wiedererkennbarkeit) hängt an
+der Konsistenz, nicht am konkreten Set. Anlagenmonitor müsste sonst
+grundlos migrieren.
+
+---
+
+## 2026-08-17 — Typografie-Skala: Rollen sind Regelwerk, Werte sind Marke
+
+**Offene Frage:** Wie viel Typografie darf das markenneutrale Regelwerk
+festlegen, wenn Schrift und Überschriftgrößen die Marke darstellen?
+
+**Entscheidung:** Das Regelwerk definiert die **Rollen** und ihre
+Verhältnisse (kompakte Skala, keine großen Seitentitel, Basis 14 px für
+Bedienflächen, 12 px für Sekundäres — mit den Enon-Werten als
+Empfehlungs-Default). Die Marke füllt die Slots: Schriftfamilie, exakte
+Größen innerhalb der dokumentierten Spannen, Versal-Labels ja/nein.
+
+**Warum:** Lesbarkeit und Dichte sind Bedienbarkeit (Regelwerk), die Stimme
+der Schrift ist Marke (Slot). Die Grenze verläuft zwischen Rolle und Wert.
