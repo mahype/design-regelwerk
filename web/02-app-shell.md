@@ -18,7 +18,8 @@ darunter die Sub-Navigation, Inhalt auf dem Seitengrund.
 
 Alle Flächen, Maße und Farben aus dem Token-Kontrakt; die hier genannten
 Pixelwerte sind die Defaults (`--sidebar-width`, `--topbar-height`,
-`--space-page`).
+`--space-page`). Wie sich das Gerüst auf schmalen Screens verhält
+(Drawer, Rail-Automatik, Vollbild-Modals): `13-responsive.md`.
 
 ## Sidebar — die einzige Seiten-Navigation
 

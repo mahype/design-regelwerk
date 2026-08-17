@@ -60,7 +60,9 @@ reduziert:
 ## Layout in Modals und auf Seiten
 
 - **Zweispaltig ab vielen Feldern** (Grid, `gap` 24/16px); breite Felder
-  (Notizen, Auswahllisten) über beide Spalten. Einspaltig bleibt der Default.
+  (Notizen, Auswahllisten) über beide Spalten. Einspaltig bleibt der
+  Default. Der Umbruch auf einspaltig folgt dem **Behälter** (Container
+  Query, `13-responsive.md`), nicht dem Viewport.
 - **Auf Seiten sitzen Felder nie nackt auf dem Seitengrund:** pro
   inhaltlichem Abschnitt eine Karte (`--surface-raised`, Radius, Rahmen,
   Schatten) mit Abschnittstitel **in** der Karte. In Modals übernimmt der

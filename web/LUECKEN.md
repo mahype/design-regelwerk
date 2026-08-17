@@ -61,43 +61,12 @@ Rückmeldepflicht verlangt es logisch.
 
 ### A1 · `13-responsive.md` — Breakpoints und schmale Screens
 
-**Was fehlt:** Das Regelwerk kennt nur Maximalbreiten (`02`: ab
-~1200–1400 px zentrieren). Nach unten ist nichts definiert: Was wird aus
-der 256px-Sidebar auf einem Tablet? Aus einem 640px-Modal, einem
-zweispaltigen Formular, der Aktionsleiste? Einziger Berührungspunkt ist
-`10` (Touch-Ziele ≥ 44 px „auf Touch-lastigen Flächen", 200 %-Zoom ohne
-Horizontal-Scroll — Letzteres ist faktisch bereits eine
-Schmal-Layout-Pflicht, die nirgends eingelöst wird).
-
-**Andere:** Fiori: vier Größenklassen (Grenzen 600/1024/1440 px) mit
-Verhalten je Klasse; Material 3 koppelt Größenklassen an Komponentenwechsel
-(Navigation: Leiste → Rail → Drawer) und an Flächenzahl (1 Fläche kompakt,
-2 ab „expanded"); Polaris/Carbon/Atlassian führen Breakpoint-Tokens; iX
-definiert em-basierte App-Breakpoints.
-
-**Vorschlag:** Drei Größenklassen genügen — **schmal** (< ~720 px),
-**mittel** (~720–1200 px), **voll** (> 1200 px, Maximalbreiten-Regel aus
-`02`). Festzulegen je Klasse:
-
-- **Grundsatz:** Unsere Anwendungen sind Desktop-Werkzeuge; optimiert wird
-  für „voll", aber **benutzbar bleibt alles bis ~360 px** (kein
-  abgeschnittener Inhalt, kein horizontales Seiten-Scrollen — deckt
-  zugleich WCAG Reflow ab).
-- **Shell:** mittel → Sidebar startet als Icon-Rail; schmal → Sidebar wird
-  Drawer über Backdrop (Menü-Toggle bleibt an derselben Stelle), Topbar
-  bleibt einzeilig, Sub-Navigation: Tabs scrollen horizontal, Aktionsleiste
-  bleibt rechts.
-- **Tabellen:** der innere Scroll-Wrapper (bereits Pflicht) ist die
-  Basisantwort; zusätzlich Spalten-Priorität erlauben (unwichtige Spalten
-  fallen unter „mittel/schmal" weg — Fioris Pop-in-Idee, vereinfacht).
-- **Modals:** schmal → Vollbild (volle Höhe/Breite), Kopf und Fuß sticky.
-- **Formulare:** Zweispalten-Grid fällt auf einspaltig zurück.
-- **Master-Detail-Split:** schmal → nacheinander statt nebeneinander
-  (Liste → Detail mit Zurück).
-- **Touch:** Ziele ≥ 44 px unter „schmal", Hover-abhängige Muster
-  (Tooltips, Hover-Aktionen) brauchen ein Touch-Äquivalent.
-- **Token-Kontrakt:** zwei Breakpoint-Tokens ergänzen
-  (`--breakpoint-narrow`, `--breakpoint-medium`).
+**✅ Erledigt 2026-08-17** — Kapitel `13-responsive.md` angelegt:
+drei Klassen (Grenzen 768/1280), benutzbar ab 320 px, Rail-Automatik in
+„mittel", Drawer unter „schmal", Tabellen mit Spalten-Priorität,
+Vollbild-Modals, Container Queries für Bausteine, Touch-Regeln.
+Breakpoint-Konstanten im Token-Kontrakt, harte Regel 13 in `AGENTS.md`,
+Abwägung samt verworfener Alternativen in `entscheidungen.md`.
 
 ### A2 · `14-detail-ansichten.md` — Detailseite und Master-Detail-Split
 

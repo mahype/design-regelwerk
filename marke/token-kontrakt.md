@@ -60,10 +60,18 @@ Markeneigene Zusatz-Tokens sind erlaubt und tragen das Präfix `--brand-*`.
                        immer kombiniert mit backdrop-filter: blur(4px) */;
 
   /* Maße (Regelwerk-Defaults; Marke ändert nur mit Grund) */
-  --space-page: 24px;    /* Seiten-Padding, Abstand zwischen Seitenblöcken */
+  --space-page: 24px;    /* Seiten-Padding, Abstand zwischen Seitenblöcken;
+                            unter „schmal" 16px (per Media Query gesetzt) */
   --space-block: 16px;   /* Abstand innerhalb eines Blocks */
   --sidebar-width: 256px;
   --topbar-height: 64px;
+
+  /* Breakpoints — Konstanten, KEINE Tokens: in @media/@container-
+     Bedingungen funktioniert var() nicht. Werte stehen als Literale im
+     Code; dieser Kontrakt ist ihre einzige Quelle (web/13-responsive.md).
+     schmal < 768px ≤ mittel < 1280px ≤ voll.
+     Tailwind v4: --breakpoint-*: initial;
+                  --breakpoint-md: 768px; --breakpoint-xl: 1280px; */
 
   /* Bewegung */
   --motion-fast: 120ms;  /* Hover, kleine Zustandswechsel */

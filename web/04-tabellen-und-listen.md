@@ -25,6 +25,8 @@ Die Tabelle ist eine Karte: `--surface-raised`, 1px `--border`, Radius
 
 - **Scroll-Wrapper innen:** `overflow-x: auto` **innerhalb** des gerundeten
   Containers (Ecken clippen sauber; die Seite scrollt nie horizontal).
+  Verhalten auf schmalen Screens — Spalten-Priorität, Footer-Umbruch:
+  `13-responsive.md`.
 - **Kopf (`th scope="col"`):** Fläche `--surface-inset`, 12px medium
   `--text-secondary` (versal je Marken-Slot), Padding 12px 20px,
   linksbündig; Zahlenspalten-Köpfe rechtsbündig wie ihre Werte.

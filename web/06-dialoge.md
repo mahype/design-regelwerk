@@ -27,7 +27,9 @@ der Fokus zum auslösenden Element zurück.
 
 - **Zentriert**; Breite `min(640px, calc(100vw - 2rem))` — klein (Bestätigung)
   `min(480px, …)`, breit (mehrspaltig, Vorschauen) `min(960px, …)`. Höhe max.
-  `calc(100vh - 4rem)`, Inhalt scrollt vertikal.
+  `calc(100vh - 4rem)`, Inhalt scrollt vertikal. Unter „schmal" werden
+  Formular- und Anzeige-Modals Vollbild, Bestätigungs-Modals bleiben klein
+  zentriert (`13-responsive.md`).
 - `--surface-raised`, 1px `--border`, Radius `--radius-surface`,
   `--shadow-overlay`.
 - **Backdrop:** `--backdrop` (abgedunkelt) **plus** `backdrop-filter:

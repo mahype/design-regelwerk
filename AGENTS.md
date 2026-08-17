@@ -51,6 +51,10 @@ Für Desktop-Apps gilt `desktop/` (siehe dortiges README), nicht `web/`.
 12. **Deutsch, ganze Sätze, Nutzersprache.** Buttons benennen die Aktion,
     Fehler erklären ohne Jargon und ohne Schuldzuweisung
     (`web/03-typografie-und-sprache.md`).
+13. **Responsive ist Pflicht.** Drei Größenklassen (Grenzen 768/1280 px);
+    jede Funktion bleibt ab 320 px Breite benutzbar, die Seite scrollt nie
+    horizontal, Touch-Ziele ≥ 44 px. Unter „schmal": Sidebar als Drawer,
+    Formular-Modals im Vollbild (`web/13-responsive.md`).
 
 ## Bei Widerspruch
 

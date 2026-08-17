@@ -230,3 +230,44 @@ Größen innerhalb der dokumentierten Spannen, Versal-Labels ja/nein.
 
 **Warum:** Lesbarkeit und Dichte sind Bedienbarkeit (Regelwerk), die Stimme
 der Schrift ist Marke (Slot). Die Grenze verläuft zwischen Rolle und Wert.
+
+---
+
+## 2026-08-17 — Responsive: drei Größenklassen (768/1280), benutzbar ab 320 px
+
+**Offene Frage:** Keines der vier Quell-Regelwerke enthielt
+Responsive-Regeln — es gab weder Breakpoints noch Regeln für Sidebar,
+Tabellen oder Modals auf schmalen Screens (Lücken-Analyse A1, Abgleich mit
+Fiori, Material 3, Carbon, Polaris, Tailwind, Bootstrap, Siemens iX).
+
+**Entscheidung:** Drei Klassen **schmal < 768 ≤ mittel < 1280 ≤ voll** mit
+genau zwei Grenzen (Kontrakt-Konstanten; Tailwind-`md`/`xl`). Anspruch:
+**jede Funktion bleibt ab 320 px benutzbar** — optimiert für den Desktop,
+mobil ggf. unbequemer, nie abgeschaltet. Sidebar: voll = gespeicherte
+Nutzerwahl, mittel = automatisch Icon-Rail (Aufklappen überlagert den
+Inhalt), schmal = Drawer über Backdrop. Tabellen: Scroll-Wrapper bleibt die
+Grundantwort, ergänzt um **Spalten-Priorität** (sekundäre Spalten entfallen
+unter schmal, die Information bleibt im Detail erreichbar; Identitäts- und
+Aktionsspalte nie). Formular-/Anzeige-Modals werden unter schmal Vollbild,
+Bestätigungs-Modals bleiben klein zentriert. Bausteine brechen per
+Container Query (Behälter, nicht Viewport); Touch wird über
+`pointer: coarse` erkannt (Ziele ≥ 44 px, Eingabeschrift 16 px).
+Details: `web/13-responsive.md`.
+
+**Verworfene Alternativen:** Fiori-Raster 600/1024/1440 (vier Klassen ohne
+vierten Verhaltensunterschied; bei 1024–1440 quetscht die volle Sidebar
+breite Tabellen). Komplette Tailwind-Skala als offizielle Grenzen (drei
+Grenzen ohne Regelbedeutung laden zu Wildwuchs ein). „Kernpfade mobil,
+Werkzeuge nur am Desktop" (zwei Funktionsklassen plus Grauzone; der
+„am Desktop fortsetzen"-Hinweis wäre genau der Erklärtext, den die Haltung
+verbietet — und WCAG-Reflow gilt ohnehin). Karten-Transformation für
+Tabellen unter schmal (zweite Darstellung derselben Liste, Spannung zur
+Tabellen-Entscheidung, hoher Aufwand je Liste). Nutzerwahl der Sidebar auch
+in mittel (vorhersehbarer, aber ein 1024er-Fenster mit voller Sidebar
+quetscht genau die Tabellen, für die das Kapitel da ist).
+
+**Warum:** So wenige Grenzen wie möglich, jede mit echtem
+Verhaltensunterschied; 768 ist der branchenweite Tablet-Sweet-Spot, 1280
+folgt aus der Shell-Arithmetik (256 px Sidebar + Abstände + ~950 px
+Tabelle). Die 320-px-Untergrenze spricht nur aus, was WCAG-Reflow ohnehin
+verlangt — als Anspruch formuliert statt als Compliance-Fußnote.
