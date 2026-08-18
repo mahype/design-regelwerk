@@ -307,3 +307,42 @@ Durchsatz — ein Extra-Schritt pro Eintrag summiert sich bei 50 Belegen).
 drei Formen — Wiedererkennbarkeit schlägt Einzelfall-Komfort. Der Kopf
 der Detailseite bleibt in der kompakten Typo-Skala (weiterhin kein
 großer Seitentitel).
+
+---
+
+## 2026-08-17 — Ausnahmezustände: reaktives Anmelde-Modal, Fehlerseiten in der Shell
+
+**Offene Frage:** Sitzungs-Ablauf, Verbindungsverlust, HTTP-Fehlerseiten,
+Deploys, Wartung und Berechtigungen waren ungeregelt (Lücken-Analyse A3).
+Auffällig: Fast kein Vergleichssystem definiert diese Zustände — nur
+Siemens iX (Fehlerseiten-Vorlagen je HTTP-Code), SAP Fiori
+(Sitzungs-Warnung, Verstecken-Norm) und GOV.UK (404/500-Muster) liefern
+Teile.
+
+**Entscheidung:** (a) **401 → reaktives Anmelde-Modal** über der Seite
+(Karte aus `12`); Eingaben bleiben erhalten, schreibende Aktionen werden
+nie automatisch wiederholt; keine Vorwarnung per Timer. (b) **Fehlerseiten
+403/404/500 in der App-Shell** als Leerzustands-Karte nach dem
+`07`-Dreiklang; nackt nur bei Bootstrap-Fehlern. (c) **Neue Version:**
+unsichtbarer Reload beim nächsten Seitenwechsel plus dezenter Hinweis für
+navigationslose Dauer-Tabs; nie Zwangs-Reload über Eingaben.
+(d) **Berechtigungen:** nie Erlaubtes existiert in der UI nicht (403 bei
+Direktaufruf); nur vorübergehend Gesperrtes bleibt sichtbar und erklärt
+sich; Rechte ändern nie Anordnung oder Form. Verbindungsverlust als
+Warn-Banner mit automatischer Wiederholung. Details:
+`web/15-ausnahmezustaende.md`.
+
+**Verworfene Alternativen:** Redirect zur Anmeldeseite mit Rücksprung
+(wirft offene Eingaben weg — genau der stille Datenverlust, den `06`/`07`
+sonst überall verhindern). Vorwarnungs-Timer à la Fiori (lohnt nur bei
+kurzen Sitzungen; zusätzlicher Meldungstyp und Timer-Logik). Nackte
+Fehlerseiten (werfen den angemeldeten Nutzer aus dem Kontext). Nur-Banner
+beim Versionswechsel (alte Versionen stehen tagelang) bzw. Nur-Automatik
+(Dauer-Tabs ohne Navigation bekommen nie eine neue Version).
+Alles-sichtbar-aber-gesperrt bei Rechten (transparent, aber tote Elemente
+gegen die Ruhe-Haltung aus `01`).
+
+**Warum:** Die Rückmeldepflicht endet nicht am Rand des Normalbetriebs.
+Alle Muster folgen denselben Grundsätzen: kein stiller Datenverlust,
+jeder Zustand erklärt sich am Ort des Geschehens, der nächste Schritt ist
+eine Aktion.

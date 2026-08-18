@@ -36,7 +36,9 @@ Für Desktop-Apps gilt `desktop/` (siehe dortiges README), nicht `web/`.
 7. **Niemand bleibt im Unklaren.** Jede Aktion reagiert sofort, jeder
    Ladezustand endet garantiert, jeder Fehler ist sichtbar und nennt den
    nächsten Schritt, Doppel-Ausführung ist verhindert
-   (`web/07-rueckmeldung.md`).
+   (`web/07-rueckmeldung.md`). Auch außerhalb des Normalbetriebs:
+   Sitzungs-Ablauf und Verbindungsverlust werfen nie Eingaben weg
+   (`web/15-ausnahmezustaende.md`).
 8. **Genau ein Primär-Button pro Sichtbereich.** Destruktives ist nie primär
    gestylt und bestätigt sich im Dialog (`web/11-komponenten.md`).
 9. **Ein Outline-Icon-Set, einfarbig.** Icons ersetzen nie Beschriftungen;

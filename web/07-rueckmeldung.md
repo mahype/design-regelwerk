@@ -3,6 +3,9 @@
 **Der Nutzer wird nie im Unklaren gelassen.** Alles, was im Hintergrund
 passiert, ist sichtbar. Nichts schlägt still fehl, kein Spinner lädt sich
 tot, kein Klick verpufft. Das ist die wichtigste Einzelregel des Regelwerks.
+Zustände außerhalb des Normalbetriebs — Sitzungs-Ablauf,
+Verbindungsverlust, Fehlerseiten, neue Version, Wartung, fehlende
+Rechte — regelt `15-ausnahmezustaende.md`.
 
 ## Jede Aktion reagiert sofort
 

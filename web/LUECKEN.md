@@ -81,44 +81,15 @@ verworfener Alternativen in `entscheidungen.md`; Querverweise in
 
 ### A3 · `15-ausnahmezustaende.md` — Session, Verbindung, Fehlerseiten, Berechtigungen
 
-**Was fehlt:** Alles außerhalb des Normalbetriebs. `07` regelt den
-Fehlerfall einer *Aktion*, aber nicht: abgelaufene Sitzung, verlorene
-Verbindung, 403/404/500 als *Seiten*, Wartungsfenster, „neue Version
-verfügbar" nach einem Deploy (stehende SPA-Tabs!), fehlende Rechte.
-
-**Andere:** iX liefert fertige Fehlerseiten-Templates je HTTP-Code und
-standardisierte Session-abgelaufen-Formulierungen; GOV.UK hat eigene
-Muster für 404, 500 und „Service unavailable"; Fiori: Warn-Dialog vor
-Session-Ende und die Norm **verstecken vs. deaktivieren** („nie berechtigt
-→ ausblenden; vorübergehend nicht möglich → deaktivieren und erklären");
-Carbon behandelt Berechtigungen im Muster „Disabled states" (inkl.
-„hidden"-Variante).
-
-**Vorschlag:**
-
-- **Session-Ablauf:** Antwortet der Server 401, erscheint das
-  Anmelde-Modal *über* der Seite (Karte wie `12`) — **Eingaben bleiben
-  erhalten**, nach Anmeldung geht es an derselben Stelle weiter. Kein
-  harter Redirect, der Formulareingaben wegwirft.
-- **Verbindungsverlust:** Banner unter der Topbar („Verbindung
-  unterbrochen — es wird erneut verbunden …"), automatische
-  Wiederholung mit Backoff, Erfolgsmeldung kurz, dann weg. Aktionen, die
-  währenddessen scheitern, folgen `07` (Fehler am Ort der Aktion).
-- **Fehlerseiten** innerhalb der Shell (Sidebar/Topbar bleiben — der
-  Nutzer ist angemeldet und soll weiterarbeiten können): 403 („kein
-  Zugriff auf diesen Bereich" + wer ihn freischalten kann), 404
-  („gibt es nicht mehr / Link prüfen" + Weg zur Liste), 500 („unerwarteter
-  Fehler" + erneut versuchen + melden). Ton nach `03`, iX-Wordings als
-  Vorlage.
-- **Neue Version:** erkennt die Anwendung ein Deploy, erscheint ein
-  dezenter Hinweis („Neue Version — jetzt neu laden"); nie automatisch
-  neu laden, solange Eingaben offen sind.
-- **Geplante Wartung:** Ankündigungs-Banner vorab, Wartungsseite währenddessen.
-- **Berechtigungen:** Was der Nutzer **nie** darf, erscheint nicht
-  (Navigation zeigt nur Erlaubtes); was **gerade** nicht geht, bleibt
-  sichtbar und erklärt sich (deckt sich mit „Disabled sparsam", `05`/`11`);
-  ganzer Bereich ohne Recht → 403-Seite. Rechte ändern nie die Anordnung
-  dessen, was bleibt (Wiedererkennbarkeit).
+**✅ Erledigt 2026-08-17** — Kapitel `15-ausnahmezustaende.md` angelegt:
+reaktives Anmelde-Modal bei 401 (Eingaben bleiben, kein Timer),
+Verbindungsverlust-Banner mit Auto-Retry, Fehlerseiten 403/404/500 in
+der App-Shell mit Wording-Vorlagen, neue Version (unsichtbarer Reload
+beim Seitenwechsel + Hinweis für Dauer-Tabs), Wartungs-Muster,
+Berechtigungs-Norm (nie Erlaubtes existiert nicht, Gesperrtes erklärt
+sich; Rechte ändern nie Anordnung oder Form). Abwägung samt verworfener
+Alternativen in `entscheidungen.md`; Querverweise in `07`/`12`, Ergänzung
+der harten Regel 7 in `AGENTS.md`.
 
 ---
 

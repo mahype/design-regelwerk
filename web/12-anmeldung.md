@@ -4,6 +4,8 @@ Login-, Registrierungs- und Passwort-Seiten stehen **außerhalb der
 App-Shell** (keine Sidebar, keine Topbar) — sind aber optisch **dieselbe
 Anwendung**: dieselben Felder, Radien, Abstände und Tokens wie jedes
 Formular im Inneren. Kein neutraler Sonderstil „vor der Anmeldung".
+Läuft die Sitzung später ab, erscheint dieselbe Karte als Anmelde-Modal
+über der Seite (`15-ausnahmezustaende.md`).
 
 ## Seite
 
