@@ -28,7 +28,9 @@ Läuft die Sitzung später ab, erscheint dieselbe Karte als Anmelde-Modal
 ## Felder & Button
 
 - Felder exakt nach `05-formulare.md` (Label darüber, 16px Feldabstand,
-  Fokus-Ring).
+  Fokus-Ring); `autocomplete="email"` und `"current-password"` sind
+  Pflicht, das Passwortfeld hat den Anzeigen-Umschalter
+  (`16-feldtypen.md`).
 - **Vollbreiter Primär-Button** — die volle Breite ist die einzige
   Abweichung vom Standard-Button. 16px Abstand darüber.
 - Beim Anmelden: Button disabled + Ladezustand; der Ladezustand endet

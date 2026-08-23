@@ -71,7 +71,8 @@ nicht geht.
 ### Eingaben
 
 Siehe `05-formulare.md` (Feld-Anatomie, Select-Pfeil-Regel, Checkbox-Listen,
-Datei-Input, Fokus).
+Datei-Input, Fokus) und `16-feldtypen.md` (Regeln je Datentyp:
+Datum, Betrag, IBAN, Combobox-Schwelle, Passwort, Drop-Zone).
 
 ### Hinweisboxen
 

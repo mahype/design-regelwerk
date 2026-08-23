@@ -29,12 +29,15 @@ reduziert:
   in eine nachgelagerte Detailstufe.
 - Wenige, klar benannte Abschnitte; abhängige Felder erst zeigen, wenn die
   auslösende Auswahl getroffen ist.
-- Umfangreiche, trennbare Aufgaben als Schritte (Wizard): pro Schritt nur die
-  nötigen Felder, Position und Fortschritt sichtbar.
+- Umfangreiche, trennbare Aufgaben als Schritte (Wizard, Abschnitt unten):
+  pro Schritt nur die nötigen Felder.
 - Unnötige Pflichtfelder vermeiden; **Optionales als „(optional)"
   kennzeichnen**, nicht Pflicht mit Sternchen-Wald markieren.
 
 ## Felder
+
+Regeln je **Datentyp** — Datum/Zeitraum, Betrag, IBAN, Auswahl/Combobox,
+Passwort, Upload, `autocomplete`-Pflichten: `16-feldtypen.md`.
 
 - **Label über dem Feld**, 12px medium `--text-secondary` (versal je
   Marken-Slot), 4px zum Input, 16px zum vorherigen Feld. Jedes Eingabefeld
@@ -56,7 +59,9 @@ reduziert:
   normal. Mehrere Checkboxen als gerahmte Liste (1px `--border`, Radius
   `--radius-control`, Padding 12px, 8px Abstand).
 - **Datei-Input:** wie ein Input (Höhe 40px), der Datei-Knopf darin als
-  graue Pille (`--surface-hover`, 12px Text).
+  graue Pille (`--surface-hover`, 12px Text) — für die beiläufige
+  Einzeldatei; wiederkehrender oder Mehrfach-Upload nutzt die Drop-Zone
+  (`16-feldtypen.md`).
 - **Technische Eingaben** (JSON, Schlüssel): `--font-mono`, 12–13px.
 - **Disabled:** 50 % Opazität, keine Zeigerhand — aber sparsam: besser aktiv
   lassen und beim Klick erklären, warum etwas gerade nicht geht.
@@ -71,6 +76,28 @@ reduziert:
   inhaltlichem Abschnitt eine Karte (`--surface-raised`, Radius, Rahmen,
   Schatten) mit Abschnittstitel **in** der Karte. In Modals übernimmt der
   Modal-Body diese Rolle.
+
+## Mehrstufige Abläufe (Wizard)
+
+Für umfangreiche, fachlich trennbare Aufgaben — im Modal (mit konstanter
+Höhe, `06-dialoge.md`) oder als Seite (ab der Schwelle oben).
+
+- **2–8 Schritte.** Wer mehr braucht, schneidet die Aufgabe neu.
+- **Schrittanzeige im Kopf:** „Schritt 2 von 4 — Zuordnung". Besuchte
+  Schritte sind anklickbar, kommende nicht.
+- **Fußzeile:** „Zurück" (sekundär, links neben dem Primär-Button) +
+  „Weiter" (der eine Primär-Button). Im letzten Schritt benennt der
+  Primär-Button die Tat („Konto anlegen") — nie „Fertig".
+- **Validierung je Schritt** beim Weiter-Klick (Fehlerblock im Schritt,
+  Regeln unten) — Fehler stauen sich nie bis zum Ende auf.
+- **Zusammenfassung ab 4 Schritten Pflicht:** Der letzte Schritt ist dann
+  „Prüfen & Bestätigen" — alle Angaben als Anzeige-Felder
+  (`14-detail-ansichten.md`) mit „Ändern"-Links zurück in den jeweiligen
+  Schritt; **geschrieben wird erst bei der Bestätigung.** Kurze Wizards
+  (2–3 Schritte) dürfen direkt im letzten Schritt abschließen.
+- **Abbruch** verhält sich wie beim Modal (`06`): Eingaben-Schutz,
+  Nachfrage vor dem Verwerfen. Serverseitige Zwischenstände gibt es
+  nicht — ein Wizard schreibt am Ende.
 
 ## Validierung & Fehler
 
@@ -105,4 +132,6 @@ Datei-Input, Fehlerblock, Secret-Box, Abschluss-Zeile: Enon
 Eingaben-erhalten: TorroConnect — Zusammenführung mit dem Fehlerblock in
 `entscheidungen.md`. Zweispalten-Grid und Karten-Pflicht für Seitenformulare:
 anlagenmonitor (5, 5a). Seiten-Schwelle: neu entschieden
-(`entscheidungen.md`).
+(`entscheidungen.md`). Wizard-Anatomie: neu, nach den Vorbildern Fiori
+(Wizard-Floorplan, Schrittgrenzen) und GOV.UK („Check answers");
+Zusammenfassungs-Schwelle ab 4 Schritten in `entscheidungen.md`.

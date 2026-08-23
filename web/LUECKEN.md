@@ -95,48 +95,29 @@ der harten Regel 7 in `AGENTS.md`.
 
 ## B — Ausbau bestehender Kapitel (fachliche Muster)
 
-### B1 · `05` + Feldtypen-Katalog (ggf. eigenes Kapitel `16-feldtypen.md`)
+### B1 · Feldtypen-Katalog
 
-Heute regelt `05` die Feld-Anatomie, aber kaum Feld*typen*. GOV.UK widmet
-jedem Datentyp ein Muster („Ask users for …"), Fiori hat die
-Picker-Familie. Für uns fehlt mindestens:
+**✅ Erledigt 2026-08-17** — als eigenes Kapitel `16-feldtypen.md`:
+Grundregeln (`autocomplete`, `inputmode`, read-only ≠ disabled, tolerant
+eingeben / normiert anzeigen), Text/Kennungen/IBAN, E-Mail/Telefon,
+Beträge (kein `type="number"`), Datum/Zeitraum/Uhrzeit,
+Auswahl mit Combobox-Schwelle ~15, Passwörter und Einmal-Codes.
+Querverweise in `03`/`05`/`11`/`12`; Abwägung in `entscheidungen.md`.
 
-- **Datum:** natives `<input type="date">` (Stufe-1-Regel aus `11`)
-  vs. Anzeige `TT.MM.JJJJ` (`03`) — klarstellen, dass die native Eingabe
-  lokalisiert anzeigt und der Wert intern `JJJJ-MM-TT` bleibt;
-  **Zeitraum** (von/bis als zwei Felder; Headless-Range erst bei echtem
-  Bedarf); GOV.UK-Regel übernehmen: für erinnerte Daten (Geburtsdatum)
-  nie einen Kalender erzwingen.
-- **Betrag:** Eingabe mit Komma und optionalem Tausenderpunkt, rechtsbündig,
-  `inputmode="decimal"`, Einheit als Suffix; intern Integer-Cents (`03`).
-- **IBAN/technische Kennungen:** Mono-Schrift, Gruppierung beim Anzeigen,
-  Copy-Button; Eingabe tolerant (Leerzeichen erlaubt).
-- **Combobox-Schwelle:** natives Select bis ~15 Optionen; darüber oder bei
-  Suchbedarf → Combobox (Headless, Stufe 3 aus `11`).
-- **`autocomplete`-Attribute** für Name/E-Mail/Adresse (WCAG 1.3.5 — fehlt
-  bislang auch in `12`).
-- **Passwortfeld:** Anzeigen-Umschalter (Auge), nie Paste blockieren.
-- **Zeichenzähler** nur bei harten fachlichen Limits (GOV.UK-Muster).
-- **Read-only vs. disabled** (Carbon): Nicht-editierbar ist ein eigener,
-  lesbarer Zustand — nicht ausgegraut.
+### B2 · Wizard-Anatomie
 
-### B2 · `05`/`06` — Wizard-Anatomie
+**✅ Erledigt 2026-08-17** — als Abschnitt „Mehrstufige Abläufe" in
+`05-formulare.md`: 2–8 Schritte, Schrittanzeige, Zurück/Weiter,
+Validierung je Schritt, Zusammenfassung „Prüfen & Bestätigen" **ab 4
+Schritten Pflicht** (kurze Wizards schließen direkt ab), Eingaben-Schutz
+beim Abbruch. Abwägung in `entscheidungen.md`.
 
-Erwähnt (Schritte, Fortschritt, konstante Höhe), aber nicht definiert.
-Fiori: 3–8 Schritte, Abschluss immer über eine **Zusammenfassung**
-(GOV.UK „Check answers" identisch). Festlegen: Schrittanzeige (Position,
-nummeriert, erledigte Schritte anklickbar?), Zurück/Weiter-Zeile,
-Validierung je Schritt (nicht erst am Ende), Zusammenfassungs-Schritt mit
-„Ändern"-Links, Abbruch-Verhalten (Eingaben-Schutz aus `06`).
+### B3 · Datei-Upload
 
-### B3 · `05` — Datei-Upload
-
-Heute nur der gestylte Datei-Input. Alle sieben Systeme haben mehr; unsere
-Produkte (Belege!) brauchen: **Drop-Zone** (Fläche = klickbar **und**
-Drop-Ziel, Fokus-/Drag-Zustand), Mehrfach-Upload, **Fortschritt je Datei**
-mit Abbrechen, Fehler je Datei (Typ/Größe **vorab** benennen, nicht erst
-nach dem Fehlschlag), Liste hochgeladener Dateien (Name, Größe, Entfernen),
-Nachbearbeitungs-Fall → eigene Seite (Schwelle aus `05` greift schon).
+**✅ Erledigt 2026-08-17** — in `16-feldtypen.md`: zweistufig
+(beiläufige Einzeldatei = Datei-Input aus `05`; wiederkehrend/mehrfach =
+Drop-Zone mit Sofort-Upload, Fortschritt/Abbrechen/Fehler je Datei-Zeile,
+Vorab-Nennung von Typen und Größen, Tastatur-/Touch-Weg).
 
 ### B4 · `04` — Truncation und Umbruch
 

@@ -45,7 +45,9 @@ verschieben, die **Rollen und Verhältnisse** stehen fest:
 - **Datumsformat** `TT.MM.JJJJ`; relative Angaben („vor 3 Minuten") nur
   zusätzlich zu einem exakten Wert (Tooltip oder Sekundärzeile).
 - Intern sind Beträge Integer-Cents und Kalendertage `JJJJ-MM-TT`-Strings —
-  die Formatierung ist reine Darstellungsschicht.
+  die Formatierung ist reine Darstellungsschicht. Die **Eingabe** dieser
+  Typen (tolerantes Parsen, kein `type="number"` für Beträge):
+  `16-feldtypen.md`.
 
 ## Sprache
 

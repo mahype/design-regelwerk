@@ -346,3 +346,42 @@ gegen die Ruhe-Haltung aus `01`).
 Alle Muster folgen denselben Grundsätzen: kein stiller Datenverlust,
 jeder Zustand erklärt sich am Ort des Geschehens, der nächste Schritt ist
 eine Aktion.
+
+---
+
+## 2026-08-17 — Feldtypen-Katalog, Wizard-Anatomie, zweistufiger Upload
+
+**Offene Frage:** `05` regelte die Feld-Anatomie, aber kaum Datentypen;
+der Wizard existierte nur als Stichwort; Upload nur als gestylter
+Datei-Input (Lücken-Analyse B1–B3; Vorbilder: GOV.UK „Ask users for …",
+Fiori Wizard/Upload Set, Polaris Drop zone und Formatregeln, Carbon File
+uploader).
+
+**Entscheidung:** (a) Die Datentyp-Regeln stehen als **eigenes Kapitel
+`web/16-feldtypen.md`** (Nachschlagewerk, inkl. Upload); `05` bleibt der
+Ablauf und erhält die **Wizard-Anatomie** (2–8 Schritte, Schrittanzeige,
+Validierung je Schritt, Tat-benennender Abschluss-Button).
+(b) **Zusammenfassungs-Schritt „Prüfen & Bestätigen" ab 4 Schritten
+Pflicht** — kurze Wizards (2–3 Schritte) schließen direkt ab; geschrieben
+wird in beiden Fällen erst am Ende. (c) **Combobox-Schwelle:** natives
+Select bis ~15 stabile Optionen; darüber, bei wachsender Menge oder
+Suchbedarf die Headless-Combobox. (d) **Upload zweistufig:** beiläufige
+Einzeldatei = Datei-Input; wiederkehrender/Mehrfach-Upload = Drop-Zone
+mit Sofort-Upload, Fortschritt und Fehlern je Datei-Zeile. Dazu als
+Typregeln u. a.: kein `type="number"` für Beträge, `autocomplete`-Pflicht,
+kein Kalender-Zwang für erinnerte Daten, Einmal-Codes als ein Feld.
+
+**Verworfene Alternativen:** Alles in `05` (eine sehr lange Datei, die
+Ablauf- und Nachschlage-Charakter mischt). Zusammenfassung **immer**
+Pflicht (GOV.UK-/Fiori-Linie — bei 2–3 Schritten ein Extra-Klick ohne
+Prüf-Mehrwert, weil alles eben erst eingegeben wurde; die Schwelle hält
+beide Fälle definiert). Immer Drop-Zone (in kleinen Modals sperrig,
+für Nebenfälle überdimensioniert). Combobox-Schwelle ~30 (native Selects
+werden ab wenigen Dutzend mühsam, besonders auf Touch) bzw. ganz ohne
+Zahl (jede Diskussion beginnt von vorn).
+
+**Warum:** Datentypen sind Nachschlage-Wissen — sie gehören in einen
+Katalog, den man je Feld aufschlägt, nicht in den Ablauftext. Die
+quantifizierten Schwellen (15 Optionen, 4 Schritte, 2–8 Schritte) folgen
+dem Fiori-Prinzip messbarer Regeln: Sie beenden Einzelfall-Debatten und
+bleiben trotzdem begründet abweichbar.
