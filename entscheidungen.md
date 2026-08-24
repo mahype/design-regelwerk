@@ -385,3 +385,50 @@ Katalog, den man je Feld aufschlägt, nicht in den Ablauftext. Die
 quantifizierten Schwellen (15 Optionen, 4 Schritte, 2–8 Schritte) folgen
 dem Fiori-Prinzip messbarer Regeln: Sie beenden Einzelfall-Debatten und
 bleiben trotzdem begründet abweichbar.
+
+---
+
+## 2026-08-17 — Tabellen-Feinschliff und Rückmeldungs-Ausbau (B4–B8)
+
+**Offene Frage:** Kürzungs-Regeln, Export, Live-Aktualisierung,
+ungespeicherte Änderungen auf Seiten, Bearbeitungskonflikte und das
+Uhrzeit-Format waren ungeregelt (Lücken-Analyse B4–B8).
+
+**Entscheidung:** (a) **Ungespeicherte Änderungen auf Seitenformularen:**
+Navigations-Guard + `beforeunload` mit der bekannten Verwerfen-Nachfrage —
+dieselbe Mechanik wie im Modal; Autosave/Entwürfe bleiben eine begründete
+fachliche Ausnahme. (b) **Export immer in beiden Formaten CSV und XLSX**
+(Dropdown unter einem Export-Button), Ort: **eigener Icon-Button in der
+Aktionsleiste**, aber nur auf Listen, zu deren Arbeit Export gehört.
+Exportiert wird die aktuelle Filterung und Sortierung; CSV mit Semikolon
+und UTF-8-BOM, XLSX mit echten Typen. (c) **Auto-Refresh nur für
+ausgewiesene Monitoring-Ansichten** — dort Pflicht mit festem Intervall,
+Stand-Anzeige, Tab-Pause und störungsfreier Aktualisierung; normale
+Listen aktualisieren bei Aktionen und Navigation. (d) **Konflikte:**
+Versionsstempel Pflicht, kein last-write-wins; Meldung mit den zwei
+benannten Wegen „Aktuelle Version laden" / „Meine Version speichern"
+(Letzteres nur wo vertretbar). (e) **Kürzen:** Zahlen nie, Spaltenköpfe
+einzeilig mit Ellipsis, Zellwerte einzeilig mit Voll-Wert eine
+Interaktion entfernt, `line-clamp` nur für ausgewiesene Textspalten.
+(f) **Uhrzeit** `HH:MM` (24 h), lokale Anzeige (Europe/Berlin), UTC
+intern. Die Aktionsleisten-Reihenfolge wächst auf: Suche → Aktualisieren
+→ Export → Plus → Zahnrad.
+
+**Verworfene Alternativen:** Kontextuelle Speicherleiste à la Polaris
+(sehr sichtbar, aber ein zweiter prominenter Speichern-Ort neben dem
+Formular-Fuß) und Fiori-Draft als Standard (serverseitige
+Entwurfs-Logik je Entität — zu schwer als Grundregel). Nur-CSV
+(deutsche Fachbereiche landen praktisch immer in Excel; die
+CSV-Stolperfallen sind real) bzw. XLSX nur bei Bedarf — **bewusst gegen
+die ursprüngliche Empfehlung**: beide Formate immer, damit die Frage nie
+wieder pro Liste diskutiert wird. Export im Zahnrad (versteckt eine
+Aktion in einem Einstellungs-Ort) oder im Footer (außerhalb des
+Blickfelds, auf kurzen Listen nicht vorhanden). Auto-Refresh für alle
+Listen (Dauer-Requests, Konfliktpotenzial, kaum Nutzen) oder nur manuell
+(für Monitoring unbrauchbar — jede Anwendung erfände wieder eigene
+Automatik).
+
+**Warum:** Alles Verlängerungen bestehender Grundsätze: kein stiller
+Datenverlust (Guard, Konflikte), Ruhe und feste Orte (Aktionsleiste,
+Intervalle ohne Nutzer-Schalter), messbare Regeln statt
+Einzelfall-Debatten (Formate, Kürzungs-Rangfolge).

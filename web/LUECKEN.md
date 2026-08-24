@@ -119,52 +119,41 @@ beim Abbruch. Abwägung in `entscheidungen.md`.
 Drop-Zone mit Sofort-Upload, Fortschritt/Abbrechen/Fehler je Datei-Zeile,
 Vorab-Nennung von Typen und Größen, Tastatur-/Touch-Weg).
 
-### B4 · `04` — Truncation und Umbruch
+### B4 · Truncation und Umbruch
 
-Ungeregelt, und die Vergleichssysteme sind sich einig (Carbon „Overflow
-content", Fiori „Wrapping and Truncation"): **Zahlen werden nie
-abgeschnitten**; Spaltenköpfe truncaten mit Ellipsis statt umzubrechen;
-Zellwerte: einzeilig mit Ellipsis + voller Wert per Tooltip/Detail —
-der volle Text ist immer eine Interaktion entfernt; mehrzeilig nur für
-definierte Textspalten (Verwendungszweck), dann mit Zeilen-Limit.
+**✅ Erledigt 2026-08-17** — Abschnitt „Überlange Inhalte" in `04`:
+Zahlen nie kürzen, Köpfe einzeilig mit Ellipsis, Zellwerte einzeilig mit
+Voll-Wert eine Interaktion entfernt, `line-clamp` nur für ausgewiesene
+Textspalten, Mitte-Kürzung für Kennungen, Vorrang der Identitätsspalte.
 
-### B5 · `04` — Export
+### B5 · Export
 
-„Export" existiert nur als Button-Beispiel. Festlegen (Fiori als Vorbild,
-bewusst kleiner): CSV als Standardformat, Ort in der Aktionsleiste
-(Zahnrad? eigener Button nur wo Export Kernarbeit ist), **exportiert wird
-die aktuelle Filterung** (nicht heimlich alles), große Mengen asynchron
-mit Fortschritt (`07`), Dateiname `entitaet_JJJJ-MM-TT.csv`, Formate wie
-angezeigt (deutsches Datum, Beträge mit Komma). Druck-Stylesheets bleiben
-Nicht-Ziel (C).
+**✅ Erledigt 2026-08-17** — Abschnitt „Export" in `04`: eigener
+Icon-Button in der Aktionsleiste (nur wo Export zur Arbeit gehört),
+Dropdown mit **immer CSV und XLSX**, exportiert wird die aktuelle
+Filterung/Sortierung, CSV mit Semikolon + UTF-8-BOM, XLSX mit echten
+Typen, `entitaet_JJJJ-MM-TT`-Dateinamen, große Mengen asynchron.
+Aktionsleisten-Reihenfolge in `02` erweitert.
 
-### B6 · `07` — Live-Daten und Aktualisierung
+### B6 · Live-Daten und Aktualisierung
 
-Für Monitoring (anlagenmonitor) nötig: Auto-Refresh-Intervall je Seite
-festgelegt (keine Nutzer-Option — „Entscheidungen statt Optionen");
-sichtbarer Stand („Stand: 12:03" + relative Angabe); Pause bei
-verborgenem Tab; Aktualisierung ohne Layout-Sprung und ohne
-Interaktionsverlust (offene Menüs/Auswahl bleiben); manuelle
-Aktualisieren-Aktion dort, wo Aktualität entscheidend ist; Wertwechsel
-dürfen kurz markieren, nie blinken.
+**✅ Erledigt 2026-08-17** — Abschnitt „Live-Daten & Aktualisierung" in
+`07`: Auto-Refresh nur für ausgewiesene Monitoring-Ansichten (festes
+Intervall, Stand-Anzeige, Tab-Pause, störungsfrei), manuelle
+Aktualisieren-Aktion in der Aktionsleiste.
 
-### B7 · `05`/`07` — Ungespeicherte Änderungen und Konflikte
+### B7 · Ungespeicherte Änderungen und Konflikte
 
-Das Modal ist geschützt (`06`, Backdrop-Regel) — **Seitenformulare nicht**:
-Navigations-Guard + Browser-`beforeunload` („Änderungen verwerfen?").
-Polaris löst das mit einer kontextuellen Speicherleiste, Fiori mit
-Entwürfen — beides für uns zu schwer; der Warn-Dialog genügt als Standard,
-**Entwurfs-Speicherung nur als begründete fachliche Ausnahme**.
-Dazu **Bearbeitungskonflikt** (zwei Personen, ein Datensatz): beim
-Speichern erkennen („inzwischen von X geändert"), Optionen: neu laden /
-eigene Eingaben behalten und vergleichen. Kein stilles Überschreiben.
+**✅ Erledigt 2026-08-17** — „Ungespeicherte Änderungen auf Seiten" in
+`05` (Guard + `beforeunload`, Autosave nur als fachliche Ausnahme) und
+„Bearbeitungskonflikte" in `07` (Versionsstempel Pflicht, kein
+last-write-wins, zwei benannte Wege).
 
-### B8 · `03` — Uhrzeit und Zeitzonen
+### B8 · Uhrzeit und Zeitzonen
 
-`03` regelt Datum, aber nicht Zeit: **24-Stunden-Format `HH:MM`**,
-Sekunden nur in Logs/Technik; kombiniert `TT.MM.JJJJ, HH:MM`; Zeitzone:
-Anzeige in lokaler Zeit (Europe/Berlin), Speicherung UTC/ISO 8601 —
-abweichende Zeitzone nur nennen, wenn fachlich relevant.
+**✅ Erledigt 2026-08-17** — in `03`: `HH:MM` (24 h), Sekunden nur in
+Logs, kombiniert `TT.MM.JJJJ, HH:MM`, Anzeige lokal (Europe/Berlin),
+Speicherung UTC/ISO 8601.
 
 ### B9 · `17-diagramme.md` — Diagramme und Kennzahlen (eigenes Kapitel)
 

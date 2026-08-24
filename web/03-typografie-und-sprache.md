@@ -44,6 +44,11 @@ verschieben, die **Rollen und Verhältnisse** stehen fest:
   unterscheiden.
 - **Datumsformat** `TT.MM.JJJJ`; relative Angaben („vor 3 Minuten") nur
   zusätzlich zu einem exakten Wert (Tooltip oder Sekundärzeile).
+- **Uhrzeit** `HH:MM` im 24-Stunden-Format; Sekunden nur in Logs und
+  Technik-Ansichten. Kombiniert: `TT.MM.JJJJ, HH:MM`.
+- **Zeitzone:** Angezeigt wird lokale Zeit (Europe/Berlin), gespeichert
+  UTC/ISO 8601. Die Zeitzone wird nur genannt, wenn sie fachlich
+  relevant ist — dann explizit („14:00 MEZ").
 - Intern sind Beträge Integer-Cents und Kalendertage `JJJJ-MM-TT`-Strings —
   die Formatierung ist reine Darstellungsschicht. Die **Eingabe** dieser
   Typen (tolerantes Parsen, kein `type="number"` für Beträge):

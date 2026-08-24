@@ -50,6 +50,42 @@ Verschlucken.
 - Erfolgsmeldungen verschwinden von selbst; Fehler bleiben, bis sie behoben
   oder quittiert sind.
 
+## Live-Daten & Aktualisierung
+
+Automatische Aktualisierung ist die **Ausnahme für ausgewiesene
+Monitoring-Ansichten** — Ansichten, deren Zweck das Beobachten ist
+(Anlagenstatus, Laufzeit-Übersichten). Normale Arbeitslisten
+aktualisieren sich bei Aktionen und Navigation.
+
+- **Festes Intervall je Ansicht**, im Code entschieden — kein
+  Nutzer-Schalter („Entscheidungen statt Optionen", `01`).
+- **Sichtbarer Stand:** „Stand: 12:03" nahe der Fläche; relative Angabe
+  nur zusätzlich (`03`).
+- **Pause bei verborgenem Tab**; bei Rückkehr sofort aktualisieren.
+- **Ohne Störung:** Aktualisierung verschiebt kein Layout und wirft
+  keine Interaktion weg — offene Menüs, Auswahlen und Eingaben bleiben.
+  Geänderte Werte dürfen sich kurz abheben (`--motion-fast`), nie
+  blinken.
+- Die **manuelle Aktualisieren-Aktion** (Icon-Button in der
+  Aktionsleiste, `02`) gibt es dort, wo Aktualität entscheidend ist;
+  während des Ladens dreht das Icon als Spinner (`09`).
+- Fortlaufende Inhalte (Logs, KI-Antworten) streamen — siehe oben.
+
+## Bearbeitungskonflikte
+
+Zwei Personen, ein Datensatz: **Stilles Überschreiben (last write wins)
+ist verboten.** Bearbeitbare Entitäten tragen einen Versionsstempel; der
+Konflikt wird **beim Speichern** erkannt und wie ein Feldfehler am Ort
+der Aktion gemeldet:
+
+- Die Meldung sagt, **was passiert ist** („Wurde inzwischen von Anna
+  geändert") und bietet zwei benannte Wege: **„Aktuelle Version laden"**
+  (holt den fremden Stand; dass die eigenen Eingaben dabei verloren
+  gehen, steht dabei) und — nur wo fachlich vertretbar — **„Meine
+  Version speichern"** (überschreibt bewusst).
+- **Bis zur Entscheidung bleiben die eigenen Eingaben erhalten** —
+  der Konflikt wirft nichts weg (`05`).
+
 ## Wo Meldungen erscheinen
 
 - **Am Ort der Aktion** — im Modal über den Abschluss-Buttons, auf Seiten als

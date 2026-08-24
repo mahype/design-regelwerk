@@ -85,10 +85,14 @@ derselben Stelle; das ist Kern der Wiedererkennbarkeit.
   mit 2px-Unterstreichung bündig auf der Leisten-Unterkante. Der aktive Tab
   erscheint zusätzlich als Suffix im Topbar-Titel. Tab-Zustand ist
   deep-linkbar (URL).
-- **Aktionsleiste des aktiven Bereichs** — Icon-Buttons, feste Reihenfolge:
+- **Aktionsleiste des aktiven Bereichs** — Icon-Buttons, feste Reihenfolge
+  (nicht Vorhandenes entfällt ersatzlos):
   1. **Suche/Filter** (Lupe → Popover, `08-suche-und-filter.md`)
-  2. **Plus** (öffnet das Anlegen-Modal des Bereichs)
-  3. **Zahnrad** (optional: selten geänderte Bereichs-Grundeinstellungen)
+  2. **Aktualisieren** (nur Monitoring-Ansichten, `07-rueckmeldung.md`)
+  3. **Export** (nur wo Export zur Arbeit gehört,
+     `04-tabellen-und-listen.md`)
+  4. **Plus** (öffnet das Anlegen-Modal des Bereichs)
+  5. **Zahnrad** (optional: selten geänderte Bereichs-Grundeinstellungen)
 - Wächst der Einstellungsbereich hinter dem Zahnrad, gliedert er sich in
   Bereiche mit **vertikaler** Bereichs-Navigation links (bewusst anders
   orientiert als die horizontalen Tabs; aktiver Eintrag mit Akzent-Balken,

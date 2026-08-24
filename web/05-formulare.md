@@ -124,6 +124,17 @@ Höhe, `06-dialoge.md`) oder als Seite (ab der Schwelle oben).
   Hinweisbox mit `--font-mono`, `word-break: break-all` und dem Satz, dass
   der Wert nur jetzt sichtbar ist; kopiert wird immer der echte Wert.
 
+## Ungespeicherte Änderungen auf Seiten
+
+Modals sind über `06` geschützt (Backdrop-Regel + Nachfrage) —
+**Seitenformulare brauchen denselben Schutz:** Wer mit ungespeicherten
+Änderungen die Seite verlässt (Navigation in der App oder
+Browser-Ereignis via `beforeunload`), bekommt die Nachfrage, ob die
+Eingaben verworfen werden sollen — gleiche Mechanik, gleicher Wortlaut
+wie im Modal. Entwurfs-Speicherung (Autosave) ist keine Standard-Lösung,
+sondern eine begründete fachliche Ausnahme (Abwägung:
+`entscheidungen.md`).
+
 ## Herkunft
 
 Modal-Pflicht, Feld-Anatomie, Select-Pfeil-Regel, Checkbox-Liste,

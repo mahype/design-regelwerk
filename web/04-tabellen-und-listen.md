@@ -66,6 +66,40 @@ Die Tabelle ist eine Karte: `--surface-raised`, 1px `--border`, Radius
 - Statusfarben sind semantisch fix (`marke/token-kontrakt.md`); die
   Markenfarbe ist nie Status.
 
+## Überlange Inhalte: Kürzen & Umbrechen
+
+- **Zahlen und Beträge werden nie abgeschnitten** — eher bekommt die
+  Spalte mehr Platz oder eine andere weicht (`13-responsive.md`).
+- **Spaltenköpfe** bleiben einzeilig und kürzen mit Ellipsis — sie
+  brechen nie um.
+- **Zellwerte** sind standardmäßig einzeilig mit Ellipsis; der volle
+  Wert ist immer **eine Interaktion entfernt** (Tooltip bei Hover und
+  Fokus, oder das Detail). Mehrzeilig nur für ausgewiesene Textspalten
+  (Verwendungszweck), dann mit festem Zeilen-Limit (`line-clamp`).
+- **Kennungen** (Hashes, lange IDs) dürfen mittig gekürzt werden, wenn
+  Anfang und Ende die Erkennung tragen; kopiert wird immer der Rohwert.
+- Die **Identitätsspalte** (was den Datensatz benennt) bekommt beim
+  Platzverteilen Vorrang — sie kürzt zuletzt.
+
+## Export
+
+Auf Listen, zu deren **Arbeit der Export gehört** (Buchungen, Umsätze,
+Auswertungen), sitzt ein Export-Icon-Button in der Aktionsleiste
+(`02-app-shell.md`) — nicht auf jeder Liste.
+
+- Der Button öffnet ein kleines Dropdown mit **„CSV" und „Excel
+  (XLSX)"** — beide Formate immer gemeinsam.
+- **Exportiert wird, was die Liste zeigt:** aktuelle Filterung und
+  Sortierung, sichtbare Spalten in Listenreihenfolge — nie heimlich
+  alles. Die Trefferzahl steht im Dropdown („1.234 Zeilen").
+- **CSV:** Semikolon als Trenner, UTF-8 **mit BOM** (sonst zerlegt
+  Excel die Umlaute), Formate wie angezeigt (`1.234,56`, `TT.MM.JJJJ`).
+  **XLSX:** echte Typen — Zahlen als Zahlen, Daten als Datum.
+- **Dateiname:** `entitaet_JJJJ-MM-TT.csv` / `.xlsx`.
+- Große Mengen laufen **asynchron** mit Fortschritt (`07`); der
+  Abschluss startet den Download und beziffert das Ergebnis
+  („1.234 Zeilen exportiert").
+
 ## Paginierung / Listen-Footer
 
 Bei größeren Datenmengen sitzt die Steuerung **immer unten im Footer** der
@@ -104,4 +138,7 @@ TorroConnect (interaction-patterns). Innerer Scroll-Wrapper,
 Aktions-Reihenfolge, neutrale Aktions-Icons, Paginierungs-Anatomie,
 Footer-Button-Disziplin: anlagenmonitor (Abschnitte 6, 6a, 7).
 Statuspunkt-mit-Tooltip: torro-design, auf den Web-Kontext eingeschränkt.
-Tabellen-statt-Karten: Abwägung in `entscheidungen.md`.
+Tabellen-statt-Karten: Abwägung in `entscheidungen.md`. Kürzungs-Regeln
+nach Fiori („Wrapping and Truncation": Zahlen nie kürzen, Köpfe nie
+umbrechen) und Carbon („Overflow content"); Export neu entschieden
+(`entscheidungen.md`), CSV-Details aus Excel-Praxis.
