@@ -127,7 +127,18 @@ URL-Werte fallen serverseitig auf den ersten gültigen Wert zurück.
 Erlaubt, wenn sie **operative Fragen beantworten** und in die Arbeit
 verlinken (Kacheln mit Zahl, Status und Ziel — „4 offene Posten →"); verboten
 als Deko oder Pflicht-Startseite ohne Inhalt. Eine Anwendung, deren Kern eine
-einzige Arbeitsliste ist, startet auf dieser Liste.
+einzige Arbeitsliste ist, startet auf dieser Liste. Anatomie der
+KPI-Kacheln und Diagramm-Regeln: `17-diagramme.md`.
+
+## Ebenen (Stapelreihenfolge)
+
+Natives `<dialog>` (`showModal()`) und das `popover`-Attribut liegen im
+**Browser-Top-Layer** — sie brauchen keinen `z-index` und liegen immer
+über allem. Für den Rest gilt eine kleine feste Skala, mehr gibt es
+nicht: **10** sticky Leisten (Topbar, Sub-Navigation, sticky
+Modal-Kopf/-Fuß) · **20** schwebende Hilfen ohne Popover-Attribut
+(Tooltips). Ad-hoc-Werte (`z-index: 9999`) sind verboten — wer höher
+muss, nutzt das Top-Layer.
 
 ## Herkunft
 

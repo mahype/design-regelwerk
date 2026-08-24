@@ -51,6 +51,13 @@ Markeneigene Zusatz-Tokens sind erlaubt und tragen das Präfix `--brand-*`.
   --status-info:          ; --status-info-surface:    ; --status-info-border:    ;
   --status-neutral:       ; --status-neutral-surface: ; --status-neutral-border: ;
 
+  /* Diagramme — nur für Anwendungen mit Diagrammen (web/17-diagramme.md):
+     kategoriale Reihenfarben; in beiden Themes ≥3:1 gegen
+     --surface-raised und untereinander auch bei Farbfehlsicht
+     unterscheidbar (Helligkeit staffeln). --chart-1 darf der Akzent sein. */
+  --chart-1: ; --chart-2: ; --chart-3: ;
+  --chart-4: ; --chart-5: ; --chart-6: ;
+
   /* Geometrie & Material */
   --radius-control: /* Buttons, Inputs, Badges — z. B. 6px */;
   --radius-surface: /* Karten, Tabellen, Modals — z. B. 8–12px */;
@@ -58,6 +65,10 @@ Markeneigene Zusatz-Tokens sind erlaubt und tragen das Präfix `--brand-*`.
   --shadow-overlay: /* Modals, Popovers, Dropdowns — deutlich */;
   --backdrop:       /* Abdunklung hinter Modals, z. B. rgb(… / 0.35);
                        immer kombiniert mit backdrop-filter: blur(4px) */;
+
+  /* Abstands-Skala — verbindliche Festwerte, keine eigenen Tokens:
+     4 / 8 / 12 / 16 / 20 / 24 px. Die Kapitel nennen Pixel direkt;
+     andere Zwischenwerte werden nicht erfunden. */
 
   /* Maße (Regelwerk-Defaults; Marke ändert nur mit Grund) */
   --space-page: 24px;    /* Seiten-Padding, Abstand zwischen Seitenblöcken;

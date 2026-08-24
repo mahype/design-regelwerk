@@ -18,6 +18,7 @@ verschieben, die **Rollen und Verhältnisse** stehen fest:
 
 | Rolle | Default | Gewicht |
 | --- | --- | --- |
+| Kennzahl-Wert (nur KPI-Kachel, `17-diagramme.md`) | 24px | 600, `tabular-nums` |
 | Karten-Sondertitel (nur Anmeldekarte) | 18px | 600 |
 | Topbar-Seitentitel (einzige Verwendung) | 16px | 600 |
 | Topbar-Kontext-Suffix | 16px | 400, sekundär |
@@ -29,7 +30,8 @@ verschieben, die **Rollen und Verhältnisse** stehen fest:
 
 - **Es gibt keine großen Seitentitel.** Der Seitenkontext steht einzeilig in
   der Topbar; im Inhalt beginnt keine `h1` mit 24px+. Große Typografie ist
-  Markenmoment-Material, kein Seitenbaustein.
+  Markenmoment-Material, kein Seitenbaustein. (Der Kennzahl-Wert ist eine
+  Zahl in einer Kachel, kein Titel — er bleibt die einzige Ausnahme.)
 - **Versal-Labels** (Labels + Tabellenköpfe in Großbuchstaben mit leichtem
   `letter-spacing`) sind ein Marken-Slot: einmal entscheiden, dann überall —
   nie gemischt.

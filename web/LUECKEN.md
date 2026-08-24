@@ -155,44 +155,23 @@ last-write-wins, zwei benannte Wege).
 Logs, kombiniert `TT.MM.JJJJ, HH:MM`, Anzeige lokal (Europe/Berlin),
 Speicherung UTC/ISO 8601.
 
-### B9 · `17-diagramme.md` — Diagramme und Kennzahlen (eigenes Kapitel)
+### B9 · Diagramme und Kennzahlen
 
-Nichts vorhanden; anlagenmonitor braucht es sicher, Auswertungen in
-Billing absehbar. Carbon (eigene Dataviz-Sektion), Fiori (Chart-Katalog +
-semantische Muster) und iX (ECharts-Theme, KPI, Gauge) zeigen den Umfang —
-wir brauchen die **kleine, strenge Teilmenge**:
+**✅ Erledigt 2026-08-17** — Kapitel `17-diagramme.md` angelegt:
+operative-Frage-Pflicht, Typen-Katalog (Linie/Fläche, Balken, Donut ≤5,
+Gauge), Chart-Tokens `--chart-1…6` als Marken-Slot, Statusfarben nur für
+Schwellen, Tabellen-Alternative als Pflicht, KPI-Kachel mit neuer
+Kennzahl-Rolle (24 px in `03`), Apache ECharts als Default-Bibliothek
+(Token-Theme, Ausnahme zur Kit-Regel in `AGENTS.md` dokumentiert).
+Abwägung in `entscheidungen.md`.
 
-- Ein Diagramm beantwortet eine operative Frage (`02`-Dashboard-Regel),
-  sonst Tabelle.
-- Wenige Typen erlaubt: Linie (Zeitreihe), Balken (Vergleich),
-  gestapelt sparsam; keine 3D-, Donut-Deko.
-- **Farben:** kategoriale Palette als neue Tokens (`--chart-1 … -6`,
-  Marken-Slot, in beiden Themes AA-tauglich); Statusfarben nur für echte
-  Schwellen/Zustände; Markenfarbe ist nie Datenreihe „aus Deko".
-- **Monochrom benutzbar:** direkte Beschriftung/Legende + unterscheidbare
-  Marker, Werte zusätzlich als Tabelle erreichbar (A11y).
-- Leerer/ladender Zustand nach `07`; Tooltip-Format nach `03`
-  (tabellarische Ziffern).
-- **KPI-Kachel** (Wert + Einheit + Status + Ziel-Link) als Baustein
-  definieren — die `02`-Dashboards bekommen damit ihre Anatomie.
-- Bibliotheksfrage klären: Chart-Bibliotheken rendern eigene Optik →
-  Ausnahme zur Kit-Regel nötig, analog Headless-Stufe 3 (`11`): erlaubt,
-  wenn vollständig über unsere Tokens gethemt (iX macht das mit ECharts
-  vor).
+### B10 · Kleinteile
 
-### B10 · `11`/`marke/` — Kleinteile
-
-- **Toast präzisieren:** Position (unten rechts), Dauer (~5 s), höchstens
-  einer sichtbar, `role="status"`, nie mit Pflichtinformation (Regel aus
-  `07` steht schon).
-- **Copy-Button** als Mini-Baustein (Icon + „Kopiert"-Bestätigung) — bei
-  IDs, IBAN, Secrets ohnehin gelebte Praxis.
-- **Token-Kontrakt:** Abstands-Skala explizit machen (4/8/12/16/20/24 als
-  `--space-1…6` oder dokumentierte Festwerte — heute stehen die Werte
-  verstreut in Kapiteln); Breakpoint-Tokens (A1); Chart-Tokens (B9).
-- **Ebenen-Absatz** in `02` oder Kontrakt: natives `<dialog>`/`popover`
-  liegen im Top-Layer, es gibt genau eine z-index-Skala für Rest
-  (Topbar < Dropdown < Toast) — nie Ad-hoc-`z-index: 9999`.
+**✅ Erledigt 2026-08-17** — Toasts (unten rechts, ~5 s, höchstens
+einer, `role="status"`) und Copy-Button als Bausteine in `11`;
+Abstands-Skala als dokumentierte Festwerte und Chart-Tokens im
+Token-Kontrakt; Ebenen-Skala in `02` (Top-Layer nativ, 10 sticky,
+20 Tooltips, Ad-hoc-z-index verboten).
 
 ---
 

@@ -432,3 +432,44 @@ Automatik).
 Datenverlust (Guard, Konflikte), Ruhe und feste Orte (Aktionsleiste,
 Intervalle ohne Nutzer-Schalter), messbare Regeln statt
 Einzelfall-Debatten (Formate, Kürzungs-Rangfolge).
+
+---
+
+## 2026-08-17 — Diagramme: ECharts als Default, kleiner Typen-Katalog plus Donut/Gauge
+
+**Offene Frage:** Diagramme und Kennzahlen waren komplett ungeregelt
+(Lücken-Analyse B9/B10) — inklusive der Spannung zur Kit-Regel: eine
+Chart-Bibliothek rendert zwangsläufig eigene Optik.
+
+**Entscheidung:** Neues Kapitel `web/17-diagramme.md`. (a) Ein Diagramm
+braucht eine operative Frage; die Werte sind immer zusätzlich als Tabelle
+erreichbar (A11y + Monochrom-Regel). (b) Typen-Katalog: Linie/Fläche,
+Balken (gestapelt sparsam), **plus Donut (≤ ~5 Segmente) und Gauge** für
+Monitoring-Auslastungen; alles Weitere erst nach dokumentiertem Bedarf.
+(c) **Apache ECharts als Default-Bibliothek** (Marken-Slot wie das
+Icon-Set), Theme zu 100 % aus Tokens, geladen nur auf Diagramm-Seiten —
+die dokumentierte Ausnahme zur Kit-Regel. (d) Neue Marken-Slot-Tokens
+`--chart-1…6`; Statusfarben nur für echte Schwellen. (e) Neue Typo-Rolle
+**Kennzahl-Wert** (24 px/600, `tabular-nums`, nur KPI-Kachel) — die
+einzige große Zahl der Skala. Dazu aus B10: **Toasts unten rechts**
+(~5 s, höchstens einer, `role="status"`), **Copy-Button** mit Häkchen-
+Rückmeldung im Button, **Abstands-Skala als dokumentierte Festwerte**
+(4/8/12/16/20/24 — keine Space-Tokens), **Ebenen-Skala** in `02`
+(Top-Layer nativ; 10 sticky, 20 Tooltips; `z-index: 9999` verboten).
+
+**Verworfene Alternativen:** Chart.js (kleiner, aber Gauge nur per
+Plugin und bei großen Zeitreihen schwächer — für Monitoring der wunde
+Punkt); Observable Plot (beste Token-/A11y-Integration, aber ohne
+Donut/Gauge — hätte den beschlossenen Katalog wieder beschnitten); freie
+Projektwahl mit Token-Pflicht (jede Neuwahl kostet die Diskussion
+erneut, Apps sähen im Detail verschieden aus); Eigenbau-SVG zuerst
+(Achsen/Tooltips/Resize/A11y selbst bauen ist teuer und fehleranfällig);
+streng-kleiner Katalog ohne Donut/Gauge (für Monitoring-Dashboards zu
+eng); echte `--space-*`-Tokens (Umbau quer durch alle Kapitel ohne
+praktischen Gewinn — Abstände sind kein Marken-Slot).
+
+**Warum:** Ein benannter Default beendet die Bibliotheksfrage genauso,
+wie Lucide sie fürs Icon-Set beendet hat; der Typen-Katalog bleibt so
+klein, dass jedes Diagramm begründbar ist, und die Tabellen-Pflicht
+sichert Zugänglichkeit und Monochrom-Benutzbarkeit unabhängig von der
+Canvas-Technik.

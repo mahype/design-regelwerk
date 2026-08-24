@@ -98,6 +98,24 @@ Für Icon-Buttons Pflicht (Hover **und** Fokus, mit kleiner Verzögerung
 ~500 ms). Tooltips tragen nie Pflichtinformation — was der Nutzer wissen
 muss, steht sichtbar.
 
+### Toasts
+
+Nur für Erfolge nach Kontextwechsel (`07-rueckmeldung.md`) — nie für
+Fehler, nie mit Pflichtinformation. **Unten rechts**, Abstand
+`--space-page` vom Rand, im Top-Layer (`popover`-Attribut);
+`--surface-raised`, 1px `--border`, Radius `--radius-surface`,
+`--shadow-overlay`, 14px Text, optional 16px-Icon. **Höchstens einer
+sichtbar** (ein neuer ersetzt den alten), verschwindet nach ~5 s von
+selbst; `role="status"`.
+
+### Copy-Button
+
+Kleiner Icon-Button (Kopieren-Symbol, `aria-label` + Tooltip) neben
+Werten, die man weiterträgt: IDs, IBAN, Schlüssel. **Kopiert wird immer
+der Rohwert** (ungruppiert, unmaskiert — `05`-Secret-Regeln). Die
+Rückmeldung wohnt im Button selbst: Icon wechselt für ~2 s zum Häkchen,
+Tooltip sagt „Kopiert" (`aria-live="polite"`) — kein Toast dafür.
+
 ### Karten
 
 Karten gruppieren Zusammengehöriges (`--surface-raised`, 1px `--border`,

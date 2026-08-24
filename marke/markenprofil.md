@@ -44,6 +44,10 @@ Das Regelwerk kennt vier Farb-Rollen; die Marke füllt sie:
   gilt besonders streng — die Markenfarbe ist nie Statusfarbe, der Status
   nimmt den eigenen Ton (Torro-Regel „Rot ist Marke, nie Status",
   verallgemeinert).
+- **Chart-Palette** (`--chart-1…6`, nur bei Anwendungen mit Diagrammen):
+  sechs kategoriale Reihenfarben, in beiden Themes ≥ 3:1 gegen die
+  Kartenfläche und untereinander auch bei Farbfehlsicht unterscheidbar;
+  `--chart-1` darf der Akzent sein (`web/17-diagramme.md`).
 - **Deko ist keine Rolle.** Farbe trägt Bedeutung; monochrom muss die
   Oberfläche benutzbar bleiben.
 
@@ -100,3 +104,5 @@ Ein Markenprofil ist vollständig, wenn:
 - [ ] Markenmoment-Orte benannt sind (oder ausdrücklich „keine")
 - [ ] Anrede + Wortliste festgelegt sind
 - [ ] Icon-Set benannt ist (Default: Lucide Outline)
+- [ ] Chart-Palette definiert ist, falls die Anwendungen Diagramme haben
+      (Bibliotheks-Default: Apache ECharts, `web/17-diagramme.md`)

@@ -20,7 +20,9 @@ Für Desktop-Apps gilt `desktop/` (siehe dortiges README), nicht `web/`.
 2. **Kein Komponenten-Framework, kein UI-Kit.** Kein shadcn/ui, kein
    Mantine/MUI/Chakra, kein Tailwind-UI — auch nicht vorschlagen. Native
    HTML-Elemente zuerst; Headless-Primitives nur für nachweislich komplexe
-   Widgets (`web/11-komponenten.md`).
+   Widgets (`web/11-komponenten.md`). Dokumentierte Ausnahme: Diagramme
+   rendert Apache ECharts, Theme komplett aus Tokens
+   (`web/17-diagramme.md`).
 3. **Hell + Dunkel sind Pflicht** — drei Zustände (System als Default,
    explizit hell, explizit dunkel), Umschalter im Kopfbereich, Wahl wird
    gespeichert (`marke/token-kontrakt.md`).
